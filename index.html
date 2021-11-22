@@ -124,8 +124,28 @@ var checkOrientation = function(){
         // orientation changed, do your magic here
         console.log(window.orientation);
 
-        let ele = document.getElementById('ppp');
-        ele.innerHTML = window.orientation;
+        if(window.orientation == "0"){
+                    var y = document.getElementById("ppp");  
+                    y.style.display = "block"; 
+
+                    var z = document.getElementById("ppwp");   
+                    z.style.display = "none"; 
+                    closeFullscreen();
+
+                    window.scrollTo(0,0);
+        }else{
+                    var y = document.getElementById("ppp");   
+                    y.style.display = "none"; 
+
+                    var z = document.getElementById("ppwp");   
+                    z.style.display = "block"; 
+
+                    
+                    openFullscreen();
+
+                    window.scrollTo(0,1);
+        }
+        
     }
 };
 
