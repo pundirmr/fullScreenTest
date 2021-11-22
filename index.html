@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
 	<title>Pulse</title>
 </head>
@@ -103,7 +105,29 @@ body {
 
 var elem = document.documentElement;
 
+function checkApple(){
+    var isApple = false;    
+if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {      
+  isApple = true;
+
+  var x = document.getElementById("pp");   // Get the element with id="demo"
+//x.style.display = "none"; 
+x.style.transform = "rotate(90deg)";
+
+var y = document.getElementById("ppp");   // Get the element with id="demo"
+y.style.display = "none"; 
+
+var z = document.getElementById("ppwp");   // Get the element with id="demo"
+z.style.display = "block"; 
+
+  window.scrollTo(0,1);
+}else{
+    openFullscreen();
+}
+}
+
     function openFullscreen() {
+
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -122,6 +146,16 @@ y.style.display = "none";
 var z = document.getElementById("ppwp");   // Get the element with id="demo"
 z.style.display = "block"; 
 
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
 }
 
 function onShare(){
