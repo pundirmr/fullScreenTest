@@ -89,33 +89,51 @@ function onShare(){
 }
 
 
-screen.orientation.addEventListener('change', function() {
-console.log('new orientation is ', screen.orientation.type);
+// screen.orientation.addEventListener('change', function() {
+// console.log('new orientation is ', screen.orientation.type);
 
-if(screen.orientation.type == 'portrait-primary'){
-    var y = document.getElementById("ppp");   // Get the element with id="demo"
-                    y.style.display = "block"; 
+// if(screen.orientation.type == 'portrait-primary'){
+//     var y = document.getElementById("ppp");   // Get the element with id="demo"
+//                     y.style.display = "block"; 
 
-                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
-                    z.style.display = "none"; 
-                    closeFullscreen();
+//                     var z = document.getElementById("ppwp");   // Get the element with id="demo"
+//                     z.style.display = "none"; 
+//                     closeFullscreen();
 
-                    window.scrollTo(0,0);
+//                     window.scrollTo(0,0);
     
-}else{    
-                    var y = document.getElementById("ppp");   // Get the element with id="demo"
-                    y.style.display = "none"; 
+// }else{    
+//                     var y = document.getElementById("ppp");   // Get the element with id="demo"
+//                     y.style.display = "none"; 
 
-                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
-                    z.style.display = "block"; 
+//                     var z = document.getElementById("ppwp");   // Get the element with id="demo"
+//                     z.style.display = "block"; 
 
                     
-                    openFullscreen();
+//                     openFullscreen();
 
-                    window.scrollTo(0,1);
+//                     window.scrollTo(0,1);
 
-}
-});
+// }
+// });
+
+var previousOrientation = window.orientation;
+var checkOrientation = function(){
+    if(window.orientation !== previousOrientation){
+        previousOrientation = window.orientation;
+        // orientation changed, do your magic here
+        console.log(window.orientation);
+
+        let ele = document.getElementById('ppp');
+        ele.innerHTML = window.orientation;
+    }
+};
+
+window.addEventListener("resize", checkOrientation, false);
+window.addEventListener("orientationchange", checkOrientation, false);
+
+// (optional) Android doesn't always fire orientationChange on 180 degree turns
+setInterval(checkOrientation, 2000);
 
 
 
