@@ -8,7 +8,7 @@
 <body>
     <div id="mainDiv">
         <button id="ppwp" class="block1" type="button" onclick="onShare()" class="block1">Share</button>
-        <button id="ppp" class="block" type="button" onclick="">Rotate to Landscape</button>
+        <button id="ppp" class="block" type="button" onclick="">Rotate phone to Landscape</button>
     </div>
 </body>
 
@@ -87,35 +87,6 @@ function onShare(){
       );
     }
 }
-
-
-// screen.orientation.addEventListener('change', function() {
-// console.log('new orientation is ', screen.orientation.type);
-
-// if(screen.orientation.type == 'portrait-primary'){
-//     var y = document.getElementById("ppp");   // Get the element with id="demo"
-//                     y.style.display = "block"; 
-
-//                     var z = document.getElementById("ppwp");   // Get the element with id="demo"
-//                     z.style.display = "none"; 
-//                     closeFullscreen();
-
-//                     window.scrollTo(0,0);
-    
-// }else{    
-//                     var y = document.getElementById("ppp");   // Get the element with id="demo"
-//                     y.style.display = "none"; 
-
-//                     var z = document.getElementById("ppwp");   // Get the element with id="demo"
-//                     z.style.display = "block"; 
-
-                    
-//                     openFullscreen();
-
-//                     window.scrollTo(0,1);
-
-// }
-// });
 
 var previousOrientation = window.orientation;
 var checkOrientation = function(){
