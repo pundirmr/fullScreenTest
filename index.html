@@ -5,7 +5,7 @@
 	<title>Pulse</title>
 </head>
 
-<body>
+<body onorientationchange="updateOrientation()">
     <div id="mainDiv">
         <button id="ppwp" class="block1" type="button" onclick="onShare()" class="block1">Share</button>
         <button id="ppp" class="block" type="button" onclick="">Rotate to Landscape</button>
@@ -50,13 +50,6 @@ body {
 <script>
 var elem = document.documentElement;
 function openFullscreen() {
-
-var y = document.getElementById("ppp");   // Get the element with id="demo"
-y.style.display = "none"; 
-
-var z = document.getElementById("ppwp");   // Get the element with id="demo"
-z.style.display = "block"; 
-
     if (elem.requestFullscreen) {
     elem.requestFullscreen();
     } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -64,6 +57,17 @@ z.style.display = "block";
     } else if (elem.msRequestFullscreen) { /* IE11 */
     elem.msRequestFullscreen();
     }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (elem.exitFullscreen) {
+    elem.exitFullscreen();
+  } else if (elem.webkitExitFullscreen) { /* Safari */
+    elem.webkitExitFullscreen();
+  } else if (elem.msExitFullscreen) { /* IE11 */
+    elem.msExitFullscreen();
+  }
 }
 
 function onShare(){
@@ -84,22 +88,94 @@ function onShare(){
     }
 }
 
+function updateOrientation() {
+            var displayStr = 'Orientation: ';
+ 
+            switch(window.orientation) {
+                case 0:
+                    displayStr += 'Portrait';
+                    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "block"; 
+
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "none"; 
+
+                    closeFullscreen();
+
+                    window.scrollTo(0,0);
+                    break;
+ 
+                case -90:
+                    displayStr += 'Landscape (right, screen turned clockwise)';
+                    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "none"; 
+
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "block"; 
+
+                    openFullscreen();
+
+                    window.scrollTo(0,1);
+
+                    break;
+ 
+                case 90:
+                    displayStr += 'Landscape (left, screen turned counterclockwise)';
+                    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "none"; 
+
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "block"; 
+
+                    openFullscreen();
+
+                    window.scrollTo(0,1);
+
+                    break;
+ 
+                case 180:
+                    displayStr += 'Portrait (upside-down portrait)';
+                    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "block"; 
+
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "none"; 
+
+                    closeFullscreen();
+
+                    window.scrollTo(0,0);
+                    break;
+            }
+         }
+
 
 
 screen.orientation.addEventListener('change', function() {
 console.log('new orientation is ', screen.orientation.type);
 
-var x = document.getElementById("mainDiv");   // Get the element with id="demo"
-
 if(screen.orientation.type == 'portrait-primary'){
-    //x.style.transform = "rotate(0deg)";
-    window.scrollTo(0,0);
-}else{
-    //x.style.transform = "rotate(90deg)";
-    openFullscreen();
-    window.scrollTo(0,1);
-}
+    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "block"; 
 
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "none"; 
+                    closeFullscreen();
+
+                    window.scrollTo(0,0);
+    
+}else{    
+                    var y = document.getElementById("ppp");   // Get the element with id="demo"
+                    y.style.display = "none"; 
+
+                    var z = document.getElementById("ppwp");   // Get the element with id="demo"
+                    z.style.display = "block"; 
+
+                    
+                    openFullscreen();
+
+                    window.scrollTo(0,1);
+
+}
 });
 
 
