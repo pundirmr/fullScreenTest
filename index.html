@@ -8,7 +8,7 @@
 <body>
     <div id="mainDiv">
         <button id="ppwp" class="block1" type="button" onclick="onShare()" class="block1">Share</button>
-        <button id="ppp" class="block" type="button" onclick="openFullscreen()">Play game</button>
+        <button id="ppp" class="block" type="button" onclick="">Rotate to Landscape</button>
     </div>
 </body>
 
@@ -25,6 +25,7 @@ body {
 .block1 {
   display: none;
   width: 100%;
+  margin: 50px 0 0 0;
   border: none;
   background-color: #582ada;
   padding: 65px 28px;
@@ -49,24 +50,52 @@ body {
 <script>
 var elem = document.documentElement;
 function openFullscreen() {
-if (elem.requestFullscreen) {
-  elem.requestFullscreen();
-} else if (elem.webkitRequestFullscreen) { /* Safari */
-  elem.webkitRequestFullscreen();
-} else if (elem.msRequestFullscreen) { /* IE11 */
-  elem.msRequestFullscreen();
+    if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+    }
+
+    var y = document.getElementById("ppp");   // Get the element with id="demo"
+y.style.display = "none"; 
+
+var z = document.getElementById("ppwp");   // Get the element with id="demo"
+z.style.display = "block"; 
 }
+
+function onShare(){
+    const title = 'Pulse';
+    const url = 'https://pundirmr.github.io/pulseScore/';
+    const text = "My high score on Pulse game";
+    if (navigator.share) {
+      navigator
+        .share({ title: `${title}`, url: `${url}`,text: `${text}`})
+        .then(() => {
+          console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+    } else {
+      window.location.replace(
+        `https://pundirmr.github.io/pulseScore/`
+      );
+    }
 }
+
+
+
 screen.orientation.addEventListener('change', function() {
 console.log('new orientation is ', screen.orientation.type);
 
 var x = document.getElementById("mainDiv");   // Get the element with id="demo"
 
 if(screen.orientation.type == 'portrait-primary'){
-    x.style.transform = "rotate(0deg)";
+    //x.style.transform = "rotate(0deg)";
     window.scrollTo(0,0);
 }else{
-    x.style.transform = "rotate(90deg)";
+    //x.style.transform = "rotate(90deg)";
+    openFullscreen();
     window.scrollTo(0,1);
 }
 
