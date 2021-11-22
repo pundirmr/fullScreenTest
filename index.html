@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<title>Pulse</title>
+</head>
+
+<body>
+
+<div class="demo-wrappper css-orientation">
+	<div class="portrait">
+        <div id="ppp"  class="vertical-center">
+            <button type="button" class="block"  onclick="openFullscreen()">Turn your device horizontally</button>
+        </div>
+    </div>
+    
+    <div id="lll" class="landscape">
+        <h1 >Landscape</h1>
+    </div>
+</div>
+
+</body>
+
+
+<style>
+    html {
+	height: 100%;
+}
+body {
+	height: 100%;
+}
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #04AA6D;
+  padding: 65px 28px;
+  font-size: 42px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.vertical-center {
+
+  width: 100%;
+    height: 100px;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
+.demo-wrappper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.demo-wrappper h1 {
+	color: #fff;
+	text-align: center;
+	margin: 0;
+
+	display: table-cell;
+    vertical-align: middle;
+}
+@media all and (orientation:portrait) {
+	body {
+		background: #79be6a;
+	}
+	.demo-wrappper .landscape {
+		display: none;
+	}
+}
+@media all and (orientation:landscape) {
+	body {
+		background-color: #309ac0;
+	}
+	.demo-wrappper .portrait {
+		display: none;
+	}
+}
+</style>
+
+<script>
+
+var elem = document.documentElement;
+
+    function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+
+  var x = document.getElementById("ppp");   // Get the element with id="demo"
+x.style.display = "none";  
+
+}
+</script>
+</html>
