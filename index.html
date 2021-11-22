@@ -8,10 +8,11 @@
 
 <body>
 
-<div class="demo-wrappper css-orientation">
+<div id="pp" class="demo-wrappper css-orientation">
 	<div class="portrait">
-        <div id="ppp"  class="vertical-center">
-            <button type="button" class="block"  onclick="openFullscreen()">Turn your device horizontally</button>
+        <div class="vertical-center">
+            <button id="ppwp" type="button" onclick="onShare()" class="block1">Share</button>
+            <button id="ppp" type="button" class="block"  onclick="openFullscreen()">Play game</button>
         </div>
     </div>
     
@@ -36,6 +37,17 @@ body {
   width: 100%;
   border: none;
   background-color: #04AA6D;
+  padding: 65px 28px;
+  font-size: 42px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block1 {
+  display: none;
+  width: 100%;
+  border: none;
+  background-color: #582ada;
   padding: 65px 28px;
   font-size: 42px;
   cursor: pointer;
@@ -79,10 +91,10 @@ body {
 }
 @media all and (orientation:landscape) {
 	body {
-		background-color: #309ac0;
+		/* background-color: #309ac0; */
 	}
 	.demo-wrappper .portrait {
-		display: none;
+		/* display: none; */
 	}
 }
 </style>
@@ -100,9 +112,34 @@ var elem = document.documentElement;
     elem.msRequestFullscreen();
   }
 
-  var x = document.getElementById("ppp");   // Get the element with id="demo"
-x.style.display = "none";  
+  var x = document.getElementById("pp");   // Get the element with id="demo"
+//x.style.display = "none"; 
+x.style.transform = "rotate(90deg)";
 
+var y = document.getElementById("ppp");   // Get the element with id="demo"
+y.style.display = "none"; 
+
+var z = document.getElementById("ppwp");   // Get the element with id="demo"
+z.style.display = "block"; 
+
+}
+
+function onShare(){
+    const title = 'Title';
+    const url = 'https://pundirmr.github.io/pulseScore/';
+    const text = "Share on native app if installed";
+    if (navigator.share) {
+      navigator
+        .share({ title: `${title}`, url: `${url}`,text: `${text}`})
+        .then(() => {
+          console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+    } else {
+      window.location.replace(
+        `https://pundirmr.github.io/pulseScore/`
+      );
+    }
 }
 </script>
 </html>
