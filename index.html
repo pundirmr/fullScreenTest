@@ -50,6 +50,13 @@ body {
 <script>
 var elem = document.documentElement;
 function openFullscreen() {
+
+var y = document.getElementById("ppp");   // Get the element with id="demo"
+y.style.display = "none"; 
+
+var z = document.getElementById("ppwp");   // Get the element with id="demo"
+z.style.display = "block"; 
+
     if (elem.requestFullscreen) {
     elem.requestFullscreen();
     } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -57,12 +64,6 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE11 */
     elem.msRequestFullscreen();
     }
-
-    var y = document.getElementById("ppp");   // Get the element with id="demo"
-y.style.display = "none"; 
-
-var z = document.getElementById("ppwp");   // Get the element with id="demo"
-z.style.display = "block"; 
 }
 
 function onShare(){
