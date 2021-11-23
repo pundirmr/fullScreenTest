@@ -88,6 +88,8 @@ function onShare(){
     }
 }
 
+var isLandscape = false;
+
 var previousOrientation = window.orientation;
 var checkOrientation = function(){
     if(window.orientation !== previousOrientation){
@@ -104,6 +106,7 @@ var checkOrientation = function(){
                     closeFullscreen();
 
                     window.scrollTo(0,0);
+                    isLandscape = false;
         }else{
                     var y = document.getElementById("ppp");   
                     y.style.display = "none"; 
@@ -115,6 +118,7 @@ var checkOrientation = function(){
                     openFullscreen();
 
                     window.scrollTo(0,1);
+                    isLandscape = true;
         }
         
     }
@@ -126,6 +130,11 @@ window.addEventListener("orientationchange", checkOrientation, false);
 // (optional) Android doesn't always fire orientationChange on 180 degree turns
 setInterval(checkOrientation, 2000);
 
+window.onscroll = function(){
+    if(isLandscape){
+        window.scrollTo(0,1);
+    }
+};
 
 
 </script>
