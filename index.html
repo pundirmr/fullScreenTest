@@ -17,7 +17,7 @@
         <button class="playButton" type="button"  onclick="displayIframe()"></button>
     </div>
 </div>
-
+<div id="bg_start" onclick="onFullScreenAndStart()" class="bg_start"></div>
 <div id="portrait" class="portrait"></div>
 <div id="iframeDisplay" class="iFrameStyle"></div>  
 
@@ -46,6 +46,22 @@ body, html {
   z-index: 50;
 }
 
+.bg_start {
+  /* The image used */
+  background-image: url("Intro.jpg");
+
+  /* Full height */
+  height: 90%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  z-index: -1; margin: -50px 0px 0px 0px;
+}
+
+
 .bg {
   /* The image used */
   background-image: url("ChooseProduct.jpg");
@@ -63,7 +79,7 @@ body, html {
 
 .soundOff {
     background-image: url(SoundOffIcon.png);
-    height: 100%;
+    height: 111%;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,7 +109,7 @@ body, html {
     background-size: cover;
     display: block;
     position: absolute;
-    z-index: 2;
+    z-index: 2; margin: 50px 0px 0px 0px;
 }
 
 .selectionYellow {
@@ -105,7 +121,7 @@ body, html {
     background-size: cover;
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 2; margin: 50px 0px 0px 0px;
 }
 
 .button1{
@@ -231,17 +247,19 @@ var checkOrientation = function(){
 window.scrollTo(0,0);
 isLandscape = false;
 
-                      document.getElementById("bg").style.display = "none";
+                     document.getElementById("bg").style.display = "none";
                      document.getElementById("portrait").style.display = "block";
                      document.getElementById("iframeDisplay").style.display = "none";
+                     document.getElementById("bg_start").style.display = "none";
 
 
         }else{
                 openFullscreen();
                 window.scrollTo(0,1);
                     isLandscape = true;
+                    document.getElementById("bg_start").style.display = "block";
 
-                    document.getElementById("bg").style.display = "block";
+                    document.getElementById("bg").style.display = "none";
                     document.getElementById("portrait").style.display = "none";
                     document.getElementById("iframeDisplay").style.display = "none";
 
@@ -265,12 +283,54 @@ window.onscroll = function(){
     }
 };
 
-function enableGreenPacket() {
-  openFullscreen();
+var selectedPacket = "green";
+    var sound = true;
+    
+    function enableGreenPacket() {
+      document.getElementById("yellowPacket").style.display = "none";
+      document.getElementById("greenPacket").style.display = "block";
       selectedPacket = "green";
       console.log(selectedPacket);
     }
+    function enableYellowPacket() {
+      document.getElementById("yellowPacket").style.display = "block";
+      document.getElementById("greenPacket").style.display = "none";
+      selectedPacket = "yellow";
+      console.log(selectedPacket);
+    }
+    function updateSound() {
+        sound = !sound;
+        if(sound){
+            document.getElementById("soundImg").style.display = "none";
+        }else{
+            document.getElementById("soundImg").style.display = "block";
+        }
+        console.log("sound:" + sound);
+    }
 
+    function displayIframe() {
+        return;
+        isGameRunning = true;
+        document.getElementById("bg").style.display = "none";
+        document.getElementById("portrait").style.display = "none";
+
+        document.getElementById("iframeDisplay").innerHTML = 
+        `
+        <iframe src="game.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    Your browser doesn't support iframes
+</iframe>
+        `;
+
+     document.getElementById("iframeDisplay").style.display = "block";
+
+    }
+
+    function onFullScreenAndStart(){
+      openFullscreen();
+      document.getElementById("bg_start").style.display = "none";
+      document.getElementById("bg").style.display = "block";
+
+    }
 
 </script>
 </html>
