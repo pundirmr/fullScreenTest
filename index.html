@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="preload" as="image" href="SelectionGreen.png">
+  <link rel="preload" as="image" href="SelectionYellow.png">
+
 	<title>Pulse</title>
 </head>
 
@@ -11,10 +14,10 @@
     <div id="yellowPacket" class="selectionYellow"></div>
     <div id="greenPacket" class="selectionGreen"></div>
     <div class="container">
-        <button class="button1" type="button" onclick="enableGreenPacket()"></button>
-        <button class="button2" type="button" onclick="enableYellowPacket()"></button>
-        <button class="button3" type="button" onclick="updateSound()"></button>
-        <button class="playButton" type="button"  onclick="displayIframe()"></button>
+        <div class="button1" type="button" onclick="enableGreenPacket()"></div>
+        <div class="button2" type="button" onclick="enableYellowPacket()"></div>
+        <div class="button3" type="button" onclick="updateSound()"></div>
+        <div class="playButton" type="button"  onclick="displayIframe()"></div>
     </div>
 </div>
 <div id="bg_start" onclick="onFullScreenAndStart()" class="bg_start"></div>
@@ -101,7 +104,7 @@ body{
     background-size: cover;
     display: block;
     position: absolute;
-    z-index: 2; margin: 50px 0px 0px 0px;
+    z-index: 2; margin: 78px 0px 0px 0px;
 }
 
 .selectionGreen {
@@ -129,52 +132,37 @@ body{
 }
 
 .button1{
-    height: 25%;
-    width: 20%;
-    margin: -50px -50px;
+  height: 62%;
+    width: 49%;
     position: relative;
-    top: 46%;
-    left: 37%;
-    border: 0px transparent;
-    background-color: transparent;
-    cursor: pointer;
+    top: -14%;
+    background-color: #ff0000;
 }
 
 .button2{
-    height: 25%;
-    width: 20%;
-    margin: -50px -50px;
+  height: 62%;
+    width: 49%;
     position: relative;
-    top: 46%;
-    right: -57%;
-    border: 0px transparent;
-    background-color: transparent;
-    cursor: pointer;
+    top: -76%;
+    left: 50%;
+    background-color: #ff0000;
 }
 
 .button3{
-    height: 9%;
-    width: 46%;
-    margin: -50px -50px;
+  height: 10%;
+    width: 100%;
     position: relative;
-    top: 59%;
-    left: 26%;
-    border: 1px transparent;
-    background-color: transparent;
-    cursor: pointer;
+    top: -70%;
+    background-color: #00e8f8;
 }
 
 
 .playButton{
-    height: 9%;
-    width: 46%;
-    margin: -50px -50px;
+  height: 18%;
+    width: 100%;
     position: relative;
-    top: 70%;
-    left: -5%;
-    border: 1px transparent;
-    background-color: transparent;
-    cursor: pointer;
+    top: -66%;
+    background-color: #ff0000;
 }
 
 .portraitInfoButton{
