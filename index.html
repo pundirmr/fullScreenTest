@@ -6,20 +6,20 @@
 </head>
 
 <body>
-<div id="bg" class="bg">
-      <div id="soundImg" class="soundOff"></div>
-      <div id="yellowPacket" class="selectionYellow"></div>
-      <div id="greenPacket" class="selectionGreen"></div>
-      <div class="container">
-          <button class="button1" type="button" onclick="enableGreenPacket()"></button>
-          <button class="button2" type="button" onclick="enableYellowPacket()"></button>
-          <button class="button3" type="button" onclick="updateSound()"></button>
-          <button class="playButton" type="button"  onclick="displayIframe()"></button>
-      </div>
-  </div>
-  
-  <div id="portrait" class="portrait"></div>
-  <div id="iframeDisplay" class="iFrameStyle"></div>  
+  <div id="bg" class="bg">
+    <div id="soundImg" class="soundOff"></div>
+    <div id="yellowPacket" class="selectionYellow"></div>
+    <div id="greenPacket" class="selectionGreen"></div>
+    <div class="container">
+        <button class="button1" type="button" onclick="enableGreenPacket()"></button>
+        <button class="button2" type="button" onclick="enableYellowPacket()"></button>
+        <button class="button3" type="button" onclick="updateSound()"></button>
+        <button class="playButton" type="button"  onclick="displayIframe()"></button>
+    </div>
+</div>
+
+<div id="portrait" class="portrait"></div>
+<div id="iframeDisplay" class="iFrameStyle"></div>  
 
 </body>
 
@@ -58,8 +58,7 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   display: none;
-  z-index: -1;
-  margin: -50px 0px 0px 0px;
+  z-index: -1; margin: -50px 0px 0px 0px;
 }
 
 .soundOff {
@@ -82,7 +81,7 @@ body, html {
     background-size: cover;
     display: block;
     position: absolute;
-    z-index: 2;
+    z-index: 2; margin: 50px 0px 0px 0px;
 }
 
 .selectionGreen {
@@ -95,7 +94,6 @@ body, html {
     display: block;
     position: absolute;
     z-index: 2;
-    margin: 50px 0px 0px 0px;
 }
 
 .selectionYellow {
@@ -108,7 +106,6 @@ body, html {
     display: none;
     position: absolute;
     z-index: 2;
-    margin: 50px 0px 0px 0px;
 }
 
 .button1{
@@ -267,6 +264,12 @@ window.onscroll = function(){
         window.scrollTo(0,1);
     }
 };
+
+function enableGreenPacket() {
+  openFullscreen();
+      selectedPacket = "green";
+      console.log(selectedPacket);
+    }
 
 
 </script>
